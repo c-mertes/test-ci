@@ -9,6 +9,7 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 RoxygenNote: 7.1.1
 Encoding: UTF-8
+BiocViews: Alignment
 Depends:
 	data.table,
 	BiocParallel
