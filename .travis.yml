@@ -23,18 +23,19 @@ before_install:
   - tlmgr install index marginfix bera nowidow parnotes
 
 install:
-  - R --version
-  - R -e 'if(!require("BiocManager")) install.packages("BiocManager")'
-  - R -e 'if(!require("devtools")) install.packages("devtools", Ncpus=4)'
-  - R -e 'BiocManager::install(Ncpus=4)'
-  - R -e 'BiocManager::install("BiocCheck")'
+  - export MAKEFLAGS="-j4"
+  - R -e 'if(!requireNamespace("BiocManager")) install.packages("BiocManager")'
+  - R -e 'if(!requireNamespace("devtools")) install.packages("devtools", Ncpus=4)'
+  - R -e 'BiocManager::install("BiocCheck", ask=FALSE, Ncpus=4)'
   - R -e 'devtools::install_dev_deps(ask=FALSE, Ncpus=4)'
 
 script:
+  - R --version
+  - R -e 'BiocManager::valid()'
   - R CMD build --keep-empty-dirs --no-resave-data .
   - R CMD check --no-vignettes --timings *tar.gz
   - R CMD BiocCheck *tar.gz
   - R -e 'devtools::run_examples()'
   - R -e 'devtools::test()'
-  - cd vignettes && R CMD Sweave --engine=knitr::knitr --pdf *.Rnw
+  - cd vignettes && R CMD Sweave --engine=knitr::knitr --pdf *.Rmd
   

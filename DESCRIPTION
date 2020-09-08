@@ -6,11 +6,10 @@ Date: 2020-08-30
 Author: Christian Mertes
 Maintainer: Christian Mertes <mertes@in.tum.de>
 Description: My test package. Just for testing the CI.
-License: What license is it under?
+License: MIT + file LICENSE
 RoxygenNote: 7.1.1
 Encoding: UTF-8
 biocViews: Alignment
-License: MIT + file LICENSE
 Depends:
 	data.table,
 	BiocParallel
