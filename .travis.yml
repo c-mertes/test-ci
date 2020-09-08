@@ -4,9 +4,6 @@ sudo: required
 # https://docs.travis-ci.com/user/caching/#r-package-cache
 cache: packages
 
-env:
-  - MAKEFLAGS="-j4"
-
 addons:
   apt:
     packages:
@@ -22,33 +19,6 @@ r:
   - bioc-release
   - 3.6.0
 
-stages:
-  - Setup Cache
-  - Test
-
-# setup cache first
-jobs:
-  include:
-    - stage: Setup Cache
-      r: bioc-devel
-      script: true
-    
-    - stage: Setup Cache
-      r: devel
-      script: true
-      
-    - stage: Setup Cache
-      r: bioc-release
-      script: true
-      
-    - stage: Setup Cache
-      r: release
-      script: true
-      
-    - stage: Setup Cache
-      r: 3.6.0
-      script: true
-
 before_install:
   - tlmgr install index marginfix bera nowidow parnotes
 
@@ -57,6 +27,7 @@ install:
   - R -e 'if(!require("BiocManager")) install.packages("BiocManager")'
   - R -e 'if(!require("devtools")) install.packages("devtools", Ncpus=4)'
   - R -e 'BiocManager::install(Ncpus=4)'
+  - R -e 'BiocManager::install("BiocCheck")'
   - R -e 'devtools::install_dev_deps(ask=FALSE, Ncpus=4)'
 
 script:

@@ -4,10 +4,13 @@
 \alias{f3}
 \title{Run BioC Rle code}
 \usage{
-f3(vec = 1:10)
+f3(vec = seq_len(10))
 }
 \arguments{
 \item{vec}{a numeric vector}
+}
+\value{
+an Rle object
 }
 \description{
 Run BioC Rle code

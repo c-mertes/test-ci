@@ -4,10 +4,13 @@
 \alias{f2}
 \title{Run my Rcpp}
 \usage{
-f2(vec = 1:10)
+f2(vec = seq_len(10))
 }
 \arguments{
 \item{vec}{a numeric vector}
+}
+\value{
+the Rcpp sum
 }
 \description{
 Run my Rcpp

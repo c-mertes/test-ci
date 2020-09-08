@@ -9,6 +9,9 @@ f1(name)
 \arguments{
 \item{name}{the name to call}
 }
+\value{
+a sentence.
+}
 \description{
 My test function
 }

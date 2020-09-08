@@ -1,23 +1,29 @@
 Package: test.ci
 Type: Package
 Title: What the package does (short line)
-Version: 1.0
+Version: 1.0.1
 Date: 2020-08-30
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Christian Mertes
+Maintainer: Christian Mertes <mertes@in.tum.de>
+Description: My test package. Just for testing the CI.
 License: What license is it under?
 RoxygenNote: 7.1.1
 Encoding: UTF-8
-BiocViews: Alignment
+biocViews: Alignment
+License: MIT + file LICENSE
 Depends:
 	data.table,
 	BiocParallel
 Imports:
 	BBmisc,
-	SummarizedExperiment
+	S4Vectors,
+	Rcpp
 LinkingTo:
 	Rcpp,
 	RcppArmadillo
 Suggests: 
-    testthat
+    testthat,
+    BiocStyle,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
