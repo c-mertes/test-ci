@@ -28,7 +28,8 @@ install:
   - R -e 'if(!requireNamespace("BiocManager")) install.packages("BiocManager")'
   - R -e 'if(!requireNamespace("devtools")) install.packages("devtools", Ncpus=4)'
   - R -e 'BiocManager::install("BiocCheck", ask=FALSE, Ncpus=4)'
-  - R -e 'devtools::install_dev_deps(ask=FALSE, Ncpus=4)'
+  - R -e 'devtools::install_dev_deps(upgrade="always", Ncpus=4)'
+  - R -e 'devtools::install(upgrade="always", Ncpus=4)'
 
 script:
   - R --version
