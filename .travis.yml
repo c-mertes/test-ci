@@ -1,5 +1,4 @@
 language: r
-sudo: required
 
 # https://docs.travis-ci.com/user/caching/#r-package-cache
 # do not cache for the testing setup (make sure all packages get installed)
