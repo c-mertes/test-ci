@@ -27,8 +27,9 @@ bioc_packages:
 
 before_install:
   - tlmgr install index marginfix bera nowidow parnotes
+  - export MAKEFLAGS="-j4"
 
-install:
+before_script:
   - export MAKEFLAGS="-j4"
   - R -e 'if(!requireNamespace("BiocManager")) install.packages("BiocManager")'
   - R -e 'if(!requireNamespace("devtools")) install.packages("devtools", Ncpus=4)'
