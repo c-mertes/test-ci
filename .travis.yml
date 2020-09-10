@@ -20,6 +20,12 @@ r:
   - bioc-release
   - 3.6.0
 
+r_packages:
+  - devtools
+
+bioc_packages:
+  - BiocCheck
+
 before_install:
   - tlmgr install index marginfix bera nowidow parnotes
 
