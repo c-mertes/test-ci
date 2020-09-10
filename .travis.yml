@@ -1,17 +1,5 @@
 language: r
 
-# https://docs.travis-ci.com/user/caching/#r-package-cache
-# do not cache for the testing setup (make sure all packages get installed)
-# cache: packages
-
-addons:
-  apt:
-    packages:
-      - libxml2-dev
-      - tk-dev
-      - libgit2-dev
-      - libmagick++-dev
-
 r:
   - devel
   - bioc-devel
@@ -19,33 +7,4 @@ r:
   - bioc-release
   - 3.6.0
 
-r_packages:
-  - devtools
-
-bioc_packages:
-  - BiocCheck
-
-before_install:
-  - tlmgr install index marginfix bera nowidow parnotes
-  - export MAKEFLAGS="-j4"
-
-before_script:
-  - export MAKEFLAGS="-j4"
-  - R -e 'if(!requireNamespace("BiocManager")) install.packages("BiocManager")'
-  - R -e 'if(!requireNamespace("devtools")) install.packages("devtools", Ncpus=4)'
-  - R -e 'BiocManager::install("BiocCheck", ask=FALSE, Ncpus=4)'
-  - R -e 'devtools::install_dev_deps(upgrade="always", Ncpus=4)'
-  - R -e 'devtools::install(upgrade="always", Ncpus=4)'
-
-script:
-  - R --version
-  - R -e 'BiocManager::version()'
-  - R -e 'BiocManager::valid()'
-  
-  - R CMD build --keep-empty-dirs --no-resave-data .
-  - R CMD check --no-vignettes --timings *tar.gz
-  - R CMD BiocCheck *tar.gz
-  - R -e 'devtools::run_examples()'
-  - R -e 'devtools::test()'
-  - cd vignettes && R CMD Sweave --engine=knitr::knitr --pdf *.Rmd
-  
+bioc_check: true
